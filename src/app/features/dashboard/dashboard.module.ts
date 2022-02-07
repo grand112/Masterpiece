@@ -7,6 +7,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { EditorModule } from './components/editor-wrapper/editor/editor.module';
 import { EditorWrapperComponent } from './components/editor-wrapper/editor-wrapper.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
@@ -14,6 +16,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
   declarations: [
     DashboardComponent,
     EditorWrapperComponent,
+    GalleryComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,
