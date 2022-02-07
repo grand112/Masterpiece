@@ -21,12 +21,14 @@ export class EditorComponent implements AfterViewInit {
   constructor(private fileSaver: FileSaverService) { }
 
   ngAfterViewInit(): void {
-    this.addClassesToEditorElements();
-    this.appendSaveButton();
-    this.appendNewImageButton();
-    this.replaceDownloadButton();
-    this.appendDownloadButton();
-    this.imageEditorComponent.loadImage = this.uploadFile.bind(this);
+    setTimeout(() => {
+      this.addClassesToEditorElements();
+      this.appendSaveButton();
+      this.appendNewImageButton();
+      this.replaceDownloadButton();
+      this.appendDownloadButton();
+      this.imageEditorComponent.loadImage = this.uploadFile.bind(this);
+    });
   }
 
   private appendDownloadButton(): void {
