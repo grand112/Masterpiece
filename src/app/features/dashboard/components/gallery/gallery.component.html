@@ -1,2 +1,45 @@
 <div class="main">
+  <div class="spinner" *ngIf="isLoading">
+    <mat-spinner
+    [diameter]="100">
+    </mat-spinner>
+  </div>
+  <div class="gallery" *ngIf="!isLoading">
+    <mat-card
+    class="gallery-card"
+    *ngFor="let image of gallery"
+    (click)="openDialog(image.url)">
+      <mat-card-header class="card-header">
+      </mat-card-header>
+      <div class="spinner" *ngIf="!image.isLoaded">
+        <mat-spinner
+        [diameter]="50">
+        </mat-spinner>
+      </div>
+      <img class="card-img" mat-card-image [src]="image.url" (load)="onImgLoaded(image)">
+      <mat-card-content class="card-content">
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
+
+<ng-template #dialogContent>
+  <mat-dialog-content class="mat-typography" >
+    <mat-spinner *ngIf="isModalImgLoading"
+    [diameter]="100">
+    </mat-spinner>
+    <img
+    class="modal-img"
+    mat-card-image
+    [src]="selectedUrl"
+    (load)="onModalImgLoaded()">
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button
+    mat-button
+    mat-dialog-close
+    class="modal-button">
+      Zamknij
+    </button>
+  </mat-dialog-actions>
+</ng-template>

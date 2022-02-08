@@ -9,13 +9,21 @@
       <span>Masterpiece</span>
     </div>
     <div class="toolbar-right">
-      <mat-icon (click)="logout()" class="toolbar-icon">logout</mat-icon>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="toolbar-icon">more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" class="top-menu">
+        <button mat-menu-item (click)="logout()" >
+          <mat-icon class="toolbar-icon">logout</mat-icon>
+          <span class="top-menu-option">Wyloguj</span>
+        </button>
+      </mat-menu>
     </div>
   </div>
 </mat-toolbar>
 
 <mat-drawer-container>
-  <mat-drawer #drawer mode="side">
+  <mat-drawer #drawer mode="side" [opened]="true">
     <div class="drawer-content">
       <div class="upper-buttons">
         <button
