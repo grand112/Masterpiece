@@ -18,18 +18,36 @@
 
 mat-drawer-container{
   background-color: transparent;
-  height: 93.4%;
+  height: 89.7%;
   padding-top: 40px
 }
 
 mat-toolbar {
   background-color: #212121;
+  height: 100px;
 }
 
 mat-drawer {
   background-color: #212121;
   padding: 20px 0 20px 0 !important;
   width: 200px;
+}
+
+.logo-img {
+  height: 80px;
+  margin-left: 50px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.logut-button {
+  color: #FCB100;
+  background-color: #212121;
+}
+
+.logut-button:hover {
+  color: #212121;
+  background-color: #FCB100;
 }
 
 .drawer-content {
@@ -71,8 +89,21 @@ mat-drawer {
   justify-content: end;
 }
 
-.toolbar-icon {
+.toolbar-icon-right {
   color:#FCB100;
+  transform: scale(1.5);
+}
+
+.toolbar-icon-left {
+  color: #FCB100;
+  transform: scale(2);
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
 }
 
 .menu-icon {

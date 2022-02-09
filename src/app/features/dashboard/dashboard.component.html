@@ -4,17 +4,17 @@
       <button
       mat-icon-button
       (click)="drawer.toggle()">
-        <mat-icon class="menu-icon toolbar-icon">menu</mat-icon>
+        <mat-icon class="menu-icon toolbar-icon-left">menu</mat-icon>
       </button>
-      <span>Masterpiece</span>
+      <img class="logo-img" mat-card-image src="assets/logo-white.png" routerLink="profile">
     </div>
     <div class="toolbar-right">
       <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon class="toolbar-icon">more_vert</mat-icon>
+        <mat-icon class="toolbar-icon-right">more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu" class="top-menu">
-        <button mat-menu-item (click)="logout()" >
-          <mat-icon class="toolbar-icon">logout</mat-icon>
+        <button mat-menu-item (click)="logout()" class="logut-button">
+          <mat-icon>logout</mat-icon>
           <span class="top-menu-option">Wyloguj</span>
         </button>
       </mat-menu>
