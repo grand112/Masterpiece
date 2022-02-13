@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { from, map, Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -9,6 +10,7 @@ import { SnackService } from 'src/app/services/snack/snack.service';
 
 import { FirestoreService } from './../../../../services/firestore/firestore.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-editor-wrapper',
   templateUrl: './editor-wrapper.component.html',
@@ -48,12 +50,13 @@ export class EditorWrapperComponent implements OnInit {
       fileId = Math.random().toString(16).slice(2);
       documentPath = `users/${this.userId}/gallery/${fileId}`;
     }
-    from(this.imageCompress.compressFile(fileUrl, -2)).subscribe(dataUrl => {
-      const blob = this.dataUrlToBlob(dataUrl);
-      const file = new File([blob], 'fileName');
-      this.firestorage.saveFile(this.userId, fileId, file);
-      this.firestore.setDocument(documentPath, { fileId, date: new Date().toUTCString() });
-    });
+    from(this.imageCompress.compressFile(fileUrl, -2)).
+      pipe(untilDestroyed(this)).subscribe(dataUrl => {
+        const blob = this.dataUrlToBlob(dataUrl);
+        const file = new File([blob], 'fileName');
+        this.firestorage.saveFile(this.userId, fileId, file);
+        this.firestore.setDocument(documentPath, { fileId, date: new Date().toUTCString() });
+      });
   }
 
   handleMessage(message: string): void {
