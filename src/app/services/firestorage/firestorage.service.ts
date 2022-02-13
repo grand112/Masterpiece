@@ -31,4 +31,8 @@ export class FirestorageService {
   getFileUrl(filePath: string): Observable<string> {
     return this.storage.ref(filePath).getDownloadURL();
   }
+
+  deleteFile(filePath: string): Observable<any> {
+    return this.storage.ref(filePath).delete();
+  }
 }

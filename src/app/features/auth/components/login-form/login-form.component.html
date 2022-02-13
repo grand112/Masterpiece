@@ -6,6 +6,7 @@
     formControlName="userName"
     type="text"
     required
+    maxlength="30"
     minlength="3"/>
     <mat-error *ngIf="userName?.hasError('required')">
       Wymagane jest podanie nazwy użytkownika

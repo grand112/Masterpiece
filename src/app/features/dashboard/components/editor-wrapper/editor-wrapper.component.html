@@ -1,6 +1,7 @@
 <div class="editor-wrapper">
   <app-editor
-  [defaultFile]="defaultFile"
+  [defaultFile]="defaultFile$ | async"
+  [openFile]="fileToOpen$ | async"
   (fileSaved)="saveFile($event)"
   (infoMessage)="handleMessage($event)">
   </app-editor>

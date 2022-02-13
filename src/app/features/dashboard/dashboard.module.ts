@@ -3,16 +3,20 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 import { EditorModule } from './components/editor-wrapper/editor/editor.module';
 import { EditorWrapperComponent } from './components/editor-wrapper/editor-wrapper.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UsersComponent } from './components/users/users.component';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
@@ -22,19 +26,23 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     EditorWrapperComponent,
     GalleryComponent,
     ProfileComponent,
+    UsersComponent,
   ],
   imports: [
     CommonModule,
     MatProgressSpinnerModule,
     EditorModule,
+    MatDividerModule,
     MatDialogModule,
     MatMenuModule,
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
+    MatListModule,
     DashboardRoutingModule,
     MatSidenavModule,
   ],
+  providers: [ NgxImageCompressService ],
 })
 export class DashboardModule { }
