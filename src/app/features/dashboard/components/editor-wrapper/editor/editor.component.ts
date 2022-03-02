@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FileSaverService } from 'ngx-filesaver';
-import { TuiImageEditorComponent } from 'tui-image-editor-angular';
+import { pl } from 'src/assets/i18n/pl';
+import { TranslationService, TuiImageEditorComponent } from 'tui-image-editor-angular';
 
 @Component({
   selector: 'app-editor',
@@ -18,7 +19,10 @@ export class EditorComponent implements AfterViewInit {
   @Output() fileSaved = new EventEmitter<string>();
   @Output() infoMessage = new EventEmitter<string>();
 
-  constructor(private fileSaver: FileSaverService) { }
+  constructor(
+    private fileSaver: FileSaverService,
+    private translate: TranslationService,
+  ) { }
 
   @Input() set openFile(file: File) {
     if (file) {
@@ -28,6 +32,7 @@ export class EditorComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
+      this.overrideLabelsTranslation();
       this.addClassesToEditorElements();
       this.appendSaveButton();
       this.appendNewImageButton();
@@ -35,6 +40,11 @@ export class EditorComponent implements AfterViewInit {
       this.appendDownloadButton();
       this.imageEditorComponent.loadImage = this.uploadFile.bind(this);
     });
+  }
+
+  private overrideLabelsTranslation(): void {
+    this.translate.loadCustomMessages('en', pl);
+    this.translate.changeLanguage('en');
   }
 
   private appendDownloadButton(): void {
